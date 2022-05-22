@@ -9,9 +9,6 @@ plugins {
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
-    doLast {
-        println("Delete build/ completed!")
-    }
 }
 
 spotless {
@@ -26,13 +23,11 @@ spotless {
         endWithNewline()
     }
 
-    java {
-        googleJavaFormat().aosp().reflowLongStrings()
-        importOrder()
-        removeUnusedImports()
-        licenseHeader("/* (C)2022 */")
-    }
     kotlin {
+        target("*.kt")
+        trimTrailingWhitespace()
+        endWithNewline()
+        indentWithTabs()
         ktlint()
         licenseHeader("/* (C)2022 */")
     }

@@ -47,7 +47,7 @@ dependencies {
     implementation Libraries.AndroidX.AppCompat
     implementation Libraries.Coroutines.CoroutinesCore
     implementation Libraries.Coroutines.CoroutinesAndroid
-    implementation Libraries.AndroidX.CoreLibraryDesgaring
+    coreLibraryDesugaring Libraries.AndroidX.CoreLibraryDesgaring
     testImplementation Libraries.Coroutines.CoroutinesTest
     implementation Libraries.Logging.Timber
     testImplementation Libraries.Test.jUnit4
