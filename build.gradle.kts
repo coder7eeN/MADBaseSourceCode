@@ -1,38 +1,35 @@
+@file:Incubating
+@file:Suppress(
+    "UnstableApiUsage",
+    "DSL_SCOPE_VIOLATION",
+    "MISSING_DEPENDENCY_CLASS",
+    "UNRESOLVED_REFERENCE_WRONG_RECEIVER",
+    "FUNCTION_CALL_EXPECTED"
+)
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+
+        // Used for Accompanist snapshots
+        maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots/") }
+    }
+
+    dependencies {
+        classpath(libs.android.gradlePlugin)
+        classpath(libs.kotlin.gradlePlugin)
+        classpath(libs.kotlin.serializationPlugin)
+        classpath(libs.hilt.gradlePlugin)
+        classpath(libs.secrets.gradlePlugin)
+        classpath(libs.google.gmsGoogleServices)
+        classpath(libs.google.crashlyticsGradle)
+    }
+}
+
 plugins {
-    id(Plugins.PluginNames.Id.AndroidApplication) version Versions.AndroidGradlePlugin apply false
-    id(Plugins.PluginNames.Id.AndroidLibrary) version Versions.AndroidGradlePlugin apply false
-    kotlin(Plugins.PluginNames.Kotlin.KotlinAndroid) version Versions.Kotlin apply false
-    id("name.remal.check-dependency-updates") version "1.5.0"
-    id("com.diffplug.spotless") version "6.4.2"
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.gradleDependencyUpdate)
 }
 
-tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
-}
-
-spotless {
-    // optional: limit format enforcement to just the files changed by this feature branch
-    ratchetFrom = "origin/develop"
-
-    format("misc") {
-        target("*.gradle", "*.md", ".gitignore")
-
-        trimTrailingWhitespace()
-        indentWithTabs()
-        endWithNewline()
-    }
-
-    kotlin {
-        target("*.kt")
-        trimTrailingWhitespace()
-        endWithNewline()
-        indentWithTabs()
-        ktlint()
-        licenseHeader("/* (C)2022 */")
-    }
-    kotlinGradle {
-        target("*.gradle.kts")
-        ktlint()
-    }
-}

@@ -1,47 +1,88 @@
 plugins {
-    id(Plugins.PluginNames.Id.AndroidApplication)
-    kotlin(Plugins.PluginNames.Kotlin.KotlinAndroid)
-    kotlin(Plugins.PluginNames.Kotlin.KotlinKapt)
+    id("dev.tsnanh.android.application")
+    id("dev.tsnanh.android.application.compose")
+    id("dev.tsnanh.android.application.jacoco")
+    kotlin("kapt")
+    id("jacoco")
+    id("dagger.hilt.android.plugin")
+    id("dev.tsnanh.spotless")
 }
 
 android {
-    compileSdk = Configs.CompileSdkVersion
+    namespace = "dev.tsnanh.android.madbasesourcecode"
 
     defaultConfig {
-        applicationId = Configs.ApplicationId
-        minSdk = Configs.MinSdkVersion
-        targetSdk = Configs.TargetSdkVersion
-        versionCode = Configs.VersionCode
-        versionName = Configs.VersionName
+        applicationId = "dev.tsnanh.android.madbasesourcecode"
+        versionCode = 1
+        versionName = "0.0.1" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // Custom test runner to set up Hilt dependency graph
+        testInstrumentationRunner =
+            "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        val debug by getting {
+            applicationIdSuffix = ".debug"
+        }
+        val release by getting {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        val benchmark by creating {
+            initWith(release)
+            signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks.add("release")
+            proguardFiles("benchmark-rules.pro")
+        }
+        val staging by creating {
+            initWith(debug)
+            signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks.add("debug")
+            applicationIdSuffix = ".staging"
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-        isCoreLibraryDesugaringEnabled = true
+    packagingOptions {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+        }
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-        allWarningsAsErrors = true
-        freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
 }
 
 dependencies {
-    coreLibraryDesugaring(Libraries.AndroidX.CoreLibraryDesgaring)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.compose.material3.windowSizeClass)
+    implementation(libs.androidx.window.manager)
+    implementation(libs.material3)
+    implementation(libs.androidx.profileinstaller)
 
-    implementation(Libraries.AndroidX.AndroidXCore)
-    implementation(Libraries.AndroidX.AppCompat)
-    implementation(Libraries.Google.Material)
-    testImplementation(Libraries.Test.jUnit4)
-    // androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    // androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation(libs.coil.kt)
+    implementation(libs.coil.kt.svg)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    kaptAndroidTest(libs.hilt.compiler)
+
+    // androidx.test is forcing JUnit, 4.12. This forces it to use 4.13
+    configurations.configureEach {
+        resolutionStrategy {
+            force(libs.junit4)
+            // Temporary workaround for https://issuetracker.google.com/174733673
+            force("org.objenesis:objenesis:2.6")
+        }
+    }
 }
