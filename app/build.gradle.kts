@@ -1,3 +1,6 @@
+import dev.tsnanh.android.madbasesourcecode.FlavorDimension
+import dev.tsnanh.android.madbasesourcecode.Flavors
+
 plugins {
     id("dev.tsnanh.android.application")
     id("dev.tsnanh.android.application.compose")
@@ -56,6 +59,18 @@ android {
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
+        }
+    }
+
+    flavorDimensions += FlavorDimension.Mode.name
+    productFlavors {
+        Flavors.values().forEach { flavor ->
+            create(flavor.name) {
+                dimension = flavor.dimension.name
+                if (flavor.applicationSuffix != null) {
+                    applicationIdSuffix = flavor.applicationSuffix
+                }
+            }
         }
     }
 }
