@@ -1,5 +1,11 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":core-data")
+
+
+include(":core-common")
+
+
 pluginManagement {
     includeBuild("build-logic")
     repositories {
@@ -25,6 +31,7 @@ dependencyResolutionManagement {
 rootProject.name = "MADBaseSourceCode"
 
 include(":app")
+include(":benchmark")
 include(":convention")
 
 // Enable Gradle's version catalog support

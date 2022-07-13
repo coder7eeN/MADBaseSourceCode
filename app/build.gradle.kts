@@ -39,10 +39,16 @@ android {
             )
         }
         val benchmark by creating {
+            // Enable all the optimizations from release build through initWith(release).
             initWith(release)
-            signingConfig = signingConfigs.getByName("debug")
             matchingFallbacks.add("release")
+            // Debug key signing is available to everyone.
+            signingConfig = signingConfigs.getByName("debug")
+            // Only use benchmark proguard rules
             proguardFiles("benchmark-rules.pro")
+            //  FIXME enabling minification breaks access to demo backend.
+            isMinifyEnabled = false
+            applicationIdSuffix = ".benchmark"
         }
         val staging by creating {
             initWith(debug)
@@ -54,6 +60,13 @@ android {
     packagingOptions {
         resources {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+            excludes.add("META-INF/*.version")
+            // Exclude consumer proguard files
+            excludes.add("META-INF/proguard/*")
+            // Exclude the Firebase/Fabric/other random properties files
+            excludes.add("/*.properties")
+            excludes.add("fabric/*.properties")
+            excludes.add("META-INF/*.properties")
         }
     }
     testOptions {

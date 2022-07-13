@@ -100,6 +100,7 @@ hilt-gradlePlugin = { group = "com.google.dagger", name = "hilt-android-gradle-p
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-serializationPlugin = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlin" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
@@ -119,6 +120,7 @@ google-analytics = "com.google.firebase:firebase-analytics-ktx:21.0.0"
 google-crashlytics = "com.google.firebase:firebase-crashlytics-ktx:18.2.10"
 google-crashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.8.1"
 google-gmsGoogleServices = "com.google.gms:google-services:4.3.10"
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

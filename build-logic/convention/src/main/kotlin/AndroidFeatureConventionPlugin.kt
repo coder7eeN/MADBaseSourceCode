@@ -25,7 +25,8 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
 
             extensions.configure<LibraryExtension> {
                 defaultConfig {
-                    testInstrumentationRunner = "dev.tsnanh.android.spotifyclone.SpotifyCloneTestRunner"
+                    testInstrumentationRunner =
+                        "dev.tsnanh.android.madbasesourcecode.MADBaseSourceCodeTestRunner"
                 }
             }
 
