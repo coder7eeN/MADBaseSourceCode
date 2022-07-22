@@ -35,3 +35,4 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.7.0" apply false
 }
 
+apply(from = "./gradle/dependencyGraph.gradle")

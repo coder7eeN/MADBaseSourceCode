@@ -1,3 +1,6 @@
+@file:Incubating
+@file:Suppress("UnstableApiUsage")
+
 import dev.tsnanh.android.madbasesourcecode.FlavorDimension
 import dev.tsnanh.android.madbasesourcecode.Flavors
 

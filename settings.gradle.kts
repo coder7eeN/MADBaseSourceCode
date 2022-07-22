@@ -1,9 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-include(":core-data")
-
-
-include(":core-common")
+include(":core-navigation")
 
 
 pluginManagement {
@@ -33,6 +30,9 @@ rootProject.name = "MADBaseSourceCode"
 include(":app")
 include(":benchmark")
 include(":convention")
+include(":core-data")
+include(":core-common")
+include(":core-network")
 
 // Enable Gradle's version catalog support
 // https://docs.gradle.org/current/userguide/platforms.html
