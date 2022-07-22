@@ -24,7 +24,7 @@ android {
 
         // Custom test runner to set up Hilt dependency graph
         testInstrumentationRunner =
-            "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
+            "dev.tsnanh.android.core.testing.MADTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -92,6 +92,12 @@ android {
 }
 
 dependencies {
+    implementation(project(":core-ui"))
+    implementation(project(":core-navigation"))
+    implementation(project(":feature-dashboard"))
+    implementation(project(":feature-search"))
+    implementation(project(":feature-profile"))
+
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)

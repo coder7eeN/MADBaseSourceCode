@@ -1,5 +1,38 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":feature-profile")
+
+
+include(":base-android")
+
+
+include(":base")
+
+
+include(":feature-search")
+
+
+include(":core-database")
+
+
+include(":core-testing")
+
+
+include(":core-ui")
+
+
+include(":core-model")
+
+
+include(":feature-dashboard")
+
+
+include(":domain")
+
+
+include(":core-datastore")
+
+
 include(":core-navigation")
 
 

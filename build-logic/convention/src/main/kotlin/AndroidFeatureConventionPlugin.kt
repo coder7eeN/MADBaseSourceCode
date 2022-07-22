@@ -7,6 +7,8 @@
 @file:Suppress("UnstableApiUsage")
 
 import com.android.build.gradle.LibraryExtension
+import dev.tsnanh.android.madbasesourcecode.configureFlavors
+import dev.tsnanh.android.madbasesourcecode.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
@@ -24,18 +26,22 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
+                configureKotlinAndroid(this)
                 defaultConfig {
                     testInstrumentationRunner =
                         "dev.tsnanh.android.madbasesourcecode.MADBaseSourceCodeTestRunner"
                 }
+                configureFlavors(this)
             }
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
             dependencies {
+                add("implementation", project(":base"))
+                add("implementation", project(":base-android"))
                 add("implementation", project(":core-model"))
                 add("implementation", project(":core-ui"))
-                add("implementation", project(":core-data"))
+                add("implementation", project(":domain"))
                 add("implementation", project(":core-common"))
                 add("implementation", project(":core-navigation"))
 
@@ -43,24 +49,11 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("androidTestImplementation", project(":core-testing"))
 
                 add("implementation", libs.findLibrary("coil.kt").get())
-                add("implementation", libs.findLibrary("coil.kt.compose").get())
-
-                add("implementation", libs.findLibrary("androidx.hilt.navigation.compose").get())
-                add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
 
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
 
                 add("implementation", libs.findLibrary("hilt.android").get())
                 add("kapt", libs.findLibrary("hilt.compiler").get())
-
-                // TODO : Remove this dependency once we upgrade to Android Studio Dolphin b/228889042
-                // These dependencies are currently necessary to render Compose previews
-                add(
-                    "debugImplementation",
-                    libs.findLibrary("androidx.customview.poolingcontainer").get()
-                )
-
-                // add("implementation", file("libs/spotify-app-remote-release-0.7.2.aar"))
             }
         }
     }

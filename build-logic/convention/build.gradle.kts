@@ -50,6 +50,10 @@ gradlePlugin {
             id = "dev.tsnanh.android.feature"
             implementationClass = "AndroidFeatureConventionPlugin"
         }
+        register("androidFeatureCompose") {
+            id = "dev.tsnanh.android.feature.compose"
+            implementationClass = "AndroidFeatureComposeConventionPlugin"
+        }
         register("androidLibraryJacoco") {
             id = "dev.tsnanh.android.library.jacoco"
             implementationClass = "AndroidLibraryJacocoConventionPlugin"

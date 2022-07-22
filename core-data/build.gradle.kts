@@ -8,6 +8,12 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":core-common"))
+    api(project(":core-model"))
+    implementation(project(":core-database"))
+    implementation(project(":core-datastore"))
+    implementation(project(":core-network"))
+
     implementation(libs.kotlinx.datetime)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
