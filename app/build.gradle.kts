@@ -12,6 +12,7 @@ plugins {
     id("jacoco")
     id("dagger.hilt.android.plugin")
     id("dev.tsnanh.spotless")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
