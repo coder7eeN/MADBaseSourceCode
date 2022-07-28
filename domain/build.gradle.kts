@@ -10,6 +10,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":base"))
     implementation(project(":core-data"))
 
     implementation(libs.hilt.android)

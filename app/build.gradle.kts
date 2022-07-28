@@ -98,6 +98,7 @@ dependencies {
     implementation(project(":feature-dashboard"))
     implementation(project(":feature-search"))
     implementation(project(":feature-profile"))
+    implementation(project(":feature-activity"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)
@@ -107,6 +108,8 @@ dependencies {
     implementation(libs.androidx.window.manager)
     implementation(libs.material3)
     implementation(libs.androidx.profileinstaller)
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.navigation.fragment)
 
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.svg)

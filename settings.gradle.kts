@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":feature-activity")
+
+
 include(":feature-profile")
 
 

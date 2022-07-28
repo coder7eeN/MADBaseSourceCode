@@ -7,7 +7,6 @@
 @file:Suppress("UnstableApiUsage")
 
 import com.android.build.gradle.LibraryExtension
-import dev.tsnanh.android.madbasesourcecode.configureFlavors
 import dev.tsnanh.android.madbasesourcecode.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -31,7 +30,6 @@ class AndroidFeatureComposeConventionPlugin : Plugin<Project> {
                     testInstrumentationRunner =
                         "dev.tsnanh.android.madbasesourcecode.MADBaseSourceCodeTestRunner"
                 }
-                configureFlavors(this)
             }
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
@@ -53,6 +51,7 @@ class AndroidFeatureComposeConventionPlugin : Plugin<Project> {
 
                 add("implementation", libs.findLibrary("androidx.hilt.navigation.compose").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
+                add("implementation", libs.findLibrary("androidx.paging.compose").get())
 
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
 

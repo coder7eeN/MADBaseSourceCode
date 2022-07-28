@@ -41,6 +41,7 @@
             <option value="$PROJECT_DIR$/core-testing" />
             <option value="$PROJECT_DIR$/core-ui" />
             <option value="$PROJECT_DIR$/domain" />
+            <option value="$PROJECT_DIR$/feature-activity" />
             <option value="$PROJECT_DIR$/feature-dashboard" />
             <option value="$PROJECT_DIR$/feature-profile" />
             <option value="$PROJECT_DIR$/feature-search" />

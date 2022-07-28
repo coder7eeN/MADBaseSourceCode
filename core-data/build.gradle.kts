@@ -15,8 +15,9 @@ dependencies {
     implementation(project(":core-network"))
 
     implementation(libs.kotlinx.datetime)
-    implementation(libs.kotlinx.coroutines.android)
+    api(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
+    api(libs.androidx.paging.runtime)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)

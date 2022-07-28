@@ -7,7 +7,6 @@
 @file:Suppress("UnstableApiUsage")
 
 import com.android.build.gradle.LibraryExtension
-import dev.tsnanh.android.madbasesourcecode.configureFlavors
 import dev.tsnanh.android.madbasesourcecode.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -31,7 +30,6 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                     testInstrumentationRunner =
                         "dev.tsnanh.android.madbasesourcecode.MADBaseSourceCodeTestRunner"
                 }
-                configureFlavors(this)
             }
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
@@ -54,6 +52,9 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
 
                 add("implementation", libs.findLibrary("hilt.android").get())
                 add("kapt", libs.findLibrary("hilt.compiler").get())
+                add("implementation", libs.findLibrary("androidx.appcompat").get())
+                add("implementation", libs.findLibrary("androidx.fragment").get())
+                add("implementation", libs.findLibrary("androidx.activity").get())
             }
         }
     }
