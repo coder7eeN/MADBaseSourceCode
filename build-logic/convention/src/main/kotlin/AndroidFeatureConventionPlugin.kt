@@ -55,6 +55,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx.appcompat").get())
                 add("implementation", libs.findLibrary("androidx.fragment").get())
                 add("implementation", libs.findLibrary("androidx.activity").get())
+                add("implementation", libs.findLibrary("material3").get())
             }
         }
     }

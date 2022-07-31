@@ -34,3 +34,4 @@ plugins {
 }
 
 apply(from = "./gradle/dependencyGraph.gradle")
+apply(from = "./gradle/config-kotlin-sources.gradle")

@@ -35,9 +35,9 @@ class UiMessageManager {
         }
     }
 
-    suspend fun clearMessage(uiMessage: UiMessage) {
+    suspend fun clearMessage(id: Long) {
         mutex.withLock {
-            _messages.update { it.filterNot { message -> message.id == uiMessage.id } }
+            _messages.update { it.filterNot { message -> message.id == id } }
         }
     }
 }

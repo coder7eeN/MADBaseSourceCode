@@ -19,11 +19,11 @@ abstract class ViewBindingFragment<T : ViewBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = bindingInflater(inflater, container, false)
-        onCreateView(binding, savedInstanceState)
+        onCreateView(savedInstanceState)
         return binding.root
     }
 
-    open fun onCreateView(binding: T, savedInstanceState: Bundle?) {}
+    open fun onCreateView(savedInstanceState: Bundle?) {}
 
     override fun onDestroyView() {
         super.onDestroyView()
