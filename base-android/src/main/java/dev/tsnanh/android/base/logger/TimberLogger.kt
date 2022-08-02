@@ -5,6 +5,12 @@ import timber.log.Timber
 import javax.inject.Inject
 
 internal class TimberLogger @Inject constructor() : Logger {
+    override fun setup(debugMode: Boolean) {
+        if (debugMode) {
+            Timber.plant(Timber.DebugTree())
+        }
+    }
+
     override fun i(message: String, vararg args: Any?) {
         Timber.i(message, args)
     }

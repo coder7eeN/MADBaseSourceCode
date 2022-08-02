@@ -53,6 +53,7 @@ androidxPalette = "1.0.0"
 gradleDependencyUpdate = "0.42.0"
 composesnapshot = "-"
 timber = "5.0.1"
+apacheCommonsCodec = "1.15"
 
 [libraries]
 accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
@@ -135,7 +136,8 @@ google-crashlytics = "com.google.firebase:firebase-crashlytics-ktx:18.2.10"
 google-crashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.8.1"
 google-gmsGoogleServices = "com.google.gms:google-services:4.3.10"
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
-timber = { module = "com.jakewharton.timber:timber", version.ref = "timber"}
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+apache-commons-codec = { group = "commons-codec", name = "commons-codec", version.ref = "apacheCommonsCodec" }
 
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

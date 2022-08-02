@@ -8,6 +8,10 @@ plugins {
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
+android {
+    namespace = "dev.tsnanh.android.core.network"
+}
+
 dependencies {
     implementation(project(":core-common"))
     implementation(project(":core-model"))
@@ -21,4 +25,10 @@ dependencies {
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    implementation(libs.apache.commons.codec)
+}
+
+secrets {
+    defaultPropertiesFileName = "secrets.defaults.properties"
 }

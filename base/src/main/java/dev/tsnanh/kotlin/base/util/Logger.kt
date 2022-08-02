@@ -1,6 +1,8 @@
 package dev.tsnanh.kotlin.base.util
 
 interface Logger {
+    fun setup(debugMode: Boolean)
+
     fun i(message: String, vararg args: Any?)
 
     fun i(throwable: Throwable, message: String, vararg args: Any?)

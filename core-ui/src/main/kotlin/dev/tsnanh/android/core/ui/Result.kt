@@ -15,6 +15,7 @@ sealed interface Result<out T> {
 fun <T> Flow<T>.asResult(
     loadingCounter: ObserveLoadingCounter? = null,
     uiMessageManager: UiMessageManager? = null,
+    logger: Logger? = null,
 ): Flow<Result<T>> {
     return this
         .map<T, Result<T>> {
@@ -26,17 +27,19 @@ fun <T> Flow<T>.asResult(
             emit(Result.Loading)
         }
         .catch {
+            logger?.e("===API ERROR===")
+            logger?.e(it)
             loadingCounter?.removeLoader()
             uiMessageManager?.emitMessage(UiMessage(it))
             emit(Result.Error(it))
         }
 }
 
-suspend inline fun <T> Flow<Result<T>>.collectResult(
+suspend inline fun <T> Flow<Result<T>>.fold(
     logger: Logger? = null,
     uiMessageManager: UiMessageManager? = null,
     crossinline onLoading: () -> Unit = {},
-    crossinline onError: (Throwable) -> Unit = {},
+    crossinline onError: (Throwable) -> Unit,
     crossinline onSuccess: (T) -> Unit,
 ) {
     collect { result ->

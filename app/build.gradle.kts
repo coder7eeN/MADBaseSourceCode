@@ -93,6 +93,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":base-android"))
     implementation(project(":core-ui"))
     implementation(project(":core-navigation"))
     implementation(project(":feature-dashboard"))

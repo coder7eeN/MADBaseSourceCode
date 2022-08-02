@@ -5,16 +5,19 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dev.tsnanh.android.core.network.NetworkConstants
 import dev.tsnanh.android.core.network.datasources.MarvelCharacterNetworkDataSource
+import dev.tsnanh.android.core.network.interceptors.MarvelApiAuthInterceptor
 import dev.tsnanh.android.core.network.retrofit.RetrofitMarvelCharacterNetwork
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface NetworkModule {
+abstract class NetworkModule {
     companion object {
         @Provides
         @Singleton
@@ -23,9 +26,14 @@ interface NetworkModule {
         }
 
         @Provides
-        fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
+        internal fun providesOkHttpClient(
+            httpLoggingInterceptor: HttpLoggingInterceptor,
+            marvelApiAuthInterceptor: MarvelApiAuthInterceptor,
+        ): OkHttpClient =
             OkHttpClient.Builder()
                 .addInterceptor(httpLoggingInterceptor)
+                .addInterceptor(marvelApiAuthInterceptor)
+                .connectTimeout(NetworkConstants.CONNECT_TIMEOUT, TimeUnit.SECONDS)
                 .build()
 
         @Provides
@@ -36,7 +44,7 @@ interface NetworkModule {
     }
 
     @Binds
-    fun bindsMarvelCharacterDataSource(
+    internal abstract fun bindsMarvelCharacterDataSource(
         retrofitMarvelCharacterNetwork: RetrofitMarvelCharacterNetwork
     ): MarvelCharacterNetworkDataSource
 }
