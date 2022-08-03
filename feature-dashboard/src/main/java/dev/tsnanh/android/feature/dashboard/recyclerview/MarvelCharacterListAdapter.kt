@@ -1,12 +1,12 @@
 package dev.tsnanh.android.feature.dashboard.recyclerview
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
+import androidx.paging.PagingDataAdapter
 import dev.tsnanh.core.models.MarvelCharacter
 import javax.inject.Inject
 
 internal class MarvelCharacterListAdapter @Inject constructor() :
-    ListAdapter<MarvelCharacter, MarvelCharacterViewHolder>(MarvelCharacterDiffUtil()) {
+    PagingDataAdapter<MarvelCharacter, MarvelCharacterViewHolder>(MarvelCharacterDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         MarvelCharacterViewHolder.from(parent)
 

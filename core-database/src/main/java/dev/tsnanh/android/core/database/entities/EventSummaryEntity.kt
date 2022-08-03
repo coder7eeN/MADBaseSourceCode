@@ -8,4 +8,5 @@ data class EventSummaryEntity(
     @PrimaryKey
     val resourceURI: String,
     val name: String,
+    val eventListEntityId: Int? = null,
 )

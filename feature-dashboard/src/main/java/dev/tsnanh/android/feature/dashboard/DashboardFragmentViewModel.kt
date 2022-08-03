@@ -2,22 +2,22 @@ package dev.tsnanh.android.feature.dashboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.tsnanh.android.core.ui.ObserveLoadingCounter
 import dev.tsnanh.android.core.ui.Result
 import dev.tsnanh.android.core.ui.UiMessageManager
 import dev.tsnanh.android.core.ui.asResult
-import dev.tsnanh.android.domain.observers.ObserveCharacterList
+import dev.tsnanh.android.domain.observers.ObservePagedCharacterList
 import dev.tsnanh.kotlin.base.util.Logger
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 internal class DashboardFragmentViewModel @Inject constructor(
-    observeCharacterList: ObserveCharacterList,
+    observePagedCharacterList: ObservePagedCharacterList,
     logger: Logger,
 ) : ViewModel() {
     private val uiMessageManager = UiMessageManager()
@@ -26,7 +26,7 @@ internal class DashboardFragmentViewModel @Inject constructor(
     private val loadingCounter = ObserveLoadingCounter()
     val isLoading = loadingCounter.flow
 
-    val characters = observeCharacterList.flow.map { it.data.results }.asResult(
+    val characters = observePagedCharacterList.flow.cachedIn(viewModelScope).asResult(
         loadingCounter = loadingCounter,
         uiMessageManager = uiMessageManager,
         logger = logger,
@@ -37,7 +37,7 @@ internal class DashboardFragmentViewModel @Inject constructor(
     )
 
     init {
-        observeCharacterList(Unit)
+        observePagedCharacterList(ObservePagedCharacterList.Params())
     }
 
     fun clearMessage(id: Long) {

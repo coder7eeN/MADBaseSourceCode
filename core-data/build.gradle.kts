@@ -8,9 +8,10 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":base"))
     implementation(project(":core-common"))
     api(project(":core-model"))
-    implementation(project(":core-database"))
+    api(project(":core-database"))
     implementation(project(":core-datastore"))
     implementation(project(":core-network"))
 

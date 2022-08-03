@@ -8,3 +8,7 @@ plugins {
 }
 
 android { namespace = "dev.tsnanh.android.feature.dashboard" }
+
+dependencies {
+    implementation(libs.androidx.paging.runtime)
+}

@@ -79,7 +79,8 @@ internal class DashboardFragment : ViewBindingFragment<FragmentDashboardBinding>
             viewModel.characters.fold(
                 onError = {},
                 onSuccess = {
-                    marvelCharacterListAdapter.submitList(it)
+                    val characterHasThumbnail = it
+                    marvelCharacterListAdapter.submitData(lifecycle, characterHasThumbnail)
                 }
             )
         }

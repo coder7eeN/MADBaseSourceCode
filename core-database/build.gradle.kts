@@ -27,7 +27,7 @@ dependencies {
     implementation(project(":core-model"))
 
     implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
+    api(libs.room.ktx)
     ksp(libs.room.compiler)
 
     implementation(libs.kotlinx.coroutines.android)
@@ -37,4 +37,5 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.room.paging)
 }

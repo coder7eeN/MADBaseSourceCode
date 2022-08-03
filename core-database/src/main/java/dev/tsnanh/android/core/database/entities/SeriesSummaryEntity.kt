@@ -8,4 +8,5 @@ data class SeriesSummaryEntity(
     @PrimaryKey
     val resourceURI: String,
     val name: String,
+    val seriesListEntityId: Int? = null,
 )

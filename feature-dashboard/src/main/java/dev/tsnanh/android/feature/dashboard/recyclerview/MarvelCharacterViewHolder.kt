@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.request.CachePolicy
 import dev.tsnanh.android.domain.util.MarvelImageVariants
 import dev.tsnanh.android.domain.util.url
 import dev.tsnanh.android.feature.dashboard.databinding.ItemMarvelCharacterBinding
@@ -21,9 +22,10 @@ internal class MarvelCharacterViewHolder private constructor(
         }
     }
 
-    fun bind(character: MarvelCharacter) {
-        binding.imageCharacter.load(character.thumbnail.url(type = MarvelImageVariants.Portrait.Fantastic)) {
-            crossfade(true)
+    fun bind(character: MarvelCharacter?) {
+        if (character == null) return
+        binding.imageCharacter.load(character.thumbnail.url(type = MarvelImageVariants.Portrait.Incredible)) {
+            diskCachePolicy(CachePolicy.ENABLED)
         }
     }
 }

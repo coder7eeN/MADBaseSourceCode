@@ -14,4 +14,7 @@ interface CharacterDao {
 
     @Insert(entity = CharacterEntity::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllCharacters(vararg characters: CharacterEntity)
+
+    @Query("DELETE FROM character_table")
+    suspend fun deleteAllCharacters()
 }

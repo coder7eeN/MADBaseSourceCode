@@ -1,12 +1,12 @@
 package dev.tsnanh.android.core.data.mappers
 
+import dev.tsnanh.android.core.database.entities.StorySummaryEntity
 import dev.tsnanh.core.models.StorySummary
-import dev.tsnanh.android.core.network.models.NetworkStorySummary
 import javax.inject.Inject
 
-class NetworkStorySummaryToStorySummary @Inject constructor() :
-    Mapper<NetworkStorySummary, StorySummary> {
-    override fun invoke(input: NetworkStorySummary): StorySummary {
+class StorySummaryEntityToStorySummaryMapper @Inject constructor() :
+    Mapper<StorySummaryEntity, StorySummary> {
+    override fun invoke(input: StorySummaryEntity): StorySummary {
         return StorySummary(
             resourceURI = input.resourceURI,
             name = input.name,
