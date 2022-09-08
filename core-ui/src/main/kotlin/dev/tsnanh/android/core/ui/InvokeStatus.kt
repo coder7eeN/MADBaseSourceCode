@@ -1,38 +1,32 @@
 package dev.tsnanh.android.core.ui
 
+import dev.tsnanh.kotlin.base.InvokeStatus
 import dev.tsnanh.kotlin.base.util.Logger
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
-
-sealed interface Result<out T> {
-    data class Success<T>(val data: T) : Result<T>
-    data class Error(val exception: Throwable? = null) : Result<Nothing>
-    object Loading : Result<Nothing>
-}
-
 fun <T> Flow<T>.asResult(
     loadingCounter: ObserveLoadingCounter? = null,
     uiMessageManager: UiMessageManager? = null,
-): Flow<Result<T>> {
+): Flow<InvokeStatus<T>> {
     return this
-        .map<T, Result<T>> {
+        .map<T, InvokeStatus<T>> {
             loadingCounter?.removeLoader()
-            Result.Success(it)
+            InvokeStatus.Success(it)
         }
         .onStart {
             loadingCounter?.addLoader()
-            emit(Result.Loading)
+            emit(InvokeStatus.Started)
         }
         .catch {
             loadingCounter?.removeLoader()
             uiMessageManager?.emitMessage(UiMessage(it))
-            emit(Result.Error(it))
+            emit(InvokeStatus.Error(it))
         }
 }
 
-suspend inline fun <T> Flow<Result<T>>.collectResult(
+suspend inline fun <T> Flow<InvokeStatus<T>>.collectResult(
     logger: Logger? = null,
     uiMessageManager: UiMessageManager? = null,
     crossinline onLoading: () -> Unit = {},
@@ -41,14 +35,14 @@ suspend inline fun <T> Flow<Result<T>>.collectResult(
 ) {
     collect { result ->
         when (result) {
-            is Result.Error -> {
+            is InvokeStatus.Error -> {
                 val throwable = result.exception ?: Exception("Unknown exception")
                 logger?.e(throwable)
                 uiMessageManager?.emitMessage(UiMessage(throwable))
                 onError(throwable)
             }
-            Result.Loading -> onLoading()
-            is Result.Success -> {
+            InvokeStatus.Started -> onLoading()
+            is InvokeStatus.Success -> {
                 onSuccess(result.data)
             }
         }

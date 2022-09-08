@@ -1,58 +1,61 @@
 [versions]
-androidDesugarJdkLibs = "1.2.2"
-accompanist = "0.25.1"
+accompanist = "0.24.8-beta"
+androidDesugarJdkLibs = "1.1.5"
 androidGradlePlugin = "7.2.2"
-androidxActivity = "1.5.1"
-androidxAppCompat = "1.5.0"
-androidxCompose = "1.2.1"
+androidxActivity = "1.4.0"
+androidxAppCompat = "1.3.0"
+androidxCompose = "1.2.0-rc03"
 androidxComposeCompiler = "1.2.0"
-androidxComposeMaterial3 = "1.0.0-beta01"
+androidxComposeMaterial3 = "1.0.0-alpha14"
 androidxConstraintLayout = "2.1.4"
 androidxCore = "1.8.0"
-androidxCustomView = "1.0.0"
+androidxCustomView = "1.0.0-beta02"
 androidxDataStore = "1.0.0"
-androidxEspresso = "3.4.0"
-androidxFragment = "1.5.2"
+androidxEspresso = "3.3.0"
+androidxFragment = "1.5.1"
 androidxHiltNavigationCompose = "1.0.0"
-androidxLifecycle = "2.5.1"
-androidxNavigation = "2.5.1"
-androidxMacroBenchmark = "1.1.0"
+androidxLifecycle = "2.5.0-rc01"
+androidxMacroBenchmark = "1.1.0-rc02"
+androidxNavigation = "2.4.2"
 androidxPaging = "3.1.1"
-androidxPagingCompose = "1.0.0-alpha16"
-androidxProfileinstaller = "1.2.0"
-androidxSavedState = "1.2.0"
+androidxRoomPaging = "2.5.0-alpha02"
+androidxPagingCompose = "1.0.0-alpha15"
+androidxProfileinstaller = "1.2.0-beta01"
+androidxSavedState = "1.1.0"
 androidxStartup = "1.1.1"
 androidxWindowManager = "1.0.0"
 androidxTest = "1.4.0"
-androidxTestExt = "1.1.3"
+androidxTestExt = "1.1.2"
 androidxUiAutomator = "2.2.0"
 androidxWork = "2.7.1"
-androidxSplashScreen = "1.0.0"
-coil = "2.2.0"
-hilt = "2.43.2"
+androidxSplashScreen = "1.0.0-rc01"
+coil = "2.0.0-rc01"
+hilt = "2.42"
 hiltExt = "1.0.0"
 jacoco = "0.8.7"
 junit4 = "4.13.2"
-kotlin = "1.7.10"
-kotlinxCoroutines = "1.6.4"
-kotlinxCoroutinesTest = "1.6.4"
-kotlinxDatetime = "0.4.0"
-kotlinxSerializationJson = "1.4.0"
-ksp = "1.7.10-1.0.6"
+kotlin = "1.7.0"
+kotlinxCoroutines = "1.6.0"
+kotlinxCoroutinesTest = "1.6.0"
+kotlinxDatetime = "0.3.3"
+kotlinxSerializationJson = "1.3.1"
+ksp = "1.7.0-1.0.6"
 ktlint = "0.43.0"
-material3 = "1.6.1"
-okhttp = "4.10.0"
+material3 = "1.5.0-alpha05"
+okhttp = "4.9.3"
 retrofit = "2.9.0"
 retrofitKotlinxSerializationJson = "0.8.0"
-room = "2.4.3"
+room = "2.4.2"
 secrets = "2.0.1"
-spotless = "6.10.0"
-protobuf = "3.21.5"
-protobufPlugin = "0.8.19"
+spotless = "6.3.0"
+protobuf = "3.20.0"
+protobufPlugin = "0.8.18"
 androidxPalette = "1.0.0"
 gradleDependencyUpdate = "0.42.0"
 composesnapshot = "-"
 timber = "5.0.1"
+apacheCommonsCodec = "1.15"
+leakcanary = "2.9.1"
 
 [libraries]
 accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
@@ -87,6 +90,7 @@ androidx-navigation-dynamic-features-fragment = { group = "androidx.navigation",
 androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "androidxNavigation" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
 androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "androidxPaging" }
+androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPagingCompose" }
 androidx-profileinstaller = { group = "androidx.profileinstaller", name = "profileinstaller", version.ref = "androidxProfileinstaller" }
 androidx-savedstate-ktx = { group = "androidx.savedstate", name = "savedstate-ktx", version.ref= "androidxSavedState"}
@@ -130,12 +134,14 @@ secrets-gradlePlugin = { group = "com.google.android.libraries.mapsplatform.secr
 spotless-gradlePlugin = { group = "com.diffplug.spotless", name = "spotless-plugin-gradle", version.ref = "spotless" }
 protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protobuf" }
 protobuf-kotlin-lite = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobuf" }
-google-analytics = "com.google.firebase:firebase-analytics-ktx:21.1.1"
-google-crashlytics = "com.google.firebase:firebase-crashlytics-ktx:18.2.13"
-google-crashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.9.1"
-google-gmsGoogleServices = "com.google.gms:google-services:4.3.13"
+google-analytics = "com.google.firebase:firebase-analytics-ktx:21.0.0"
+google-crashlytics = "com.google.firebase:firebase-crashlytics-ktx:18.2.10"
+google-crashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.8.1"
+google-gmsGoogleServices = "com.google.gms:google-services:4.3.10"
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
-timber = { module = "com.jakewharton.timber:timber", version.ref = "timber"}
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+apache-commons-codec = { group = "commons-codec", name = "commons-codec", version.ref = "apacheCommonsCodec" }
+leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
 
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

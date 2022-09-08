@@ -2,10 +2,7 @@ package dev.tsnanh.android.domain
 
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import dev.tsnanh.kotlin.base.InvokeError
-import dev.tsnanh.kotlin.base.InvokeStarted
 import dev.tsnanh.kotlin.base.InvokeStatus
-import dev.tsnanh.kotlin.base.InvokeSuccess
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
@@ -21,17 +18,17 @@ abstract class Interactor<in P> {
     operator fun invoke(
         params: P,
         timeoutMs: Long = defaultTimeoutMs
-    ): Flow<InvokeStatus> = flow {
+    ): Flow<InvokeStatus<Unit>> = flow {
         try {
             withTimeout(timeoutMs) {
-                emit(InvokeStarted)
+                emit(InvokeStatus.Started)
                 doWork(params)
-                emit(InvokeSuccess)
+                emit(InvokeStatus.Success(Unit))
             }
         } catch (timeOutException: TimeoutCancellationException) {
-            emit(InvokeError(timeOutException))
+            emit(InvokeStatus.Error(timeOutException))
         }
-    }.catch { t -> emit(InvokeError(t)) }
+    }.catch { t -> emit(InvokeStatus.Error(t)) }
 
     protected abstract suspend fun doWork(params: P)
 

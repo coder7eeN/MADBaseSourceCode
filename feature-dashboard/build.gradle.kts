@@ -8,3 +8,8 @@ plugins {
 }
 
 android { namespace = "dev.tsnanh.android.feature.dashboard" }
+
+dependencies {
+    implementation(project(":core-testing"))
+    implementation(libs.androidx.paging.runtime)
+}

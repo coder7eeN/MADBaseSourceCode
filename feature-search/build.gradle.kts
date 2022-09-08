@@ -8,3 +8,7 @@ plugins {
 }
 
 android { namespace = "dev.tsnanh.android.feature.search" }
+
+dependencies {
+    implementation(project(":core-testing"))
+}

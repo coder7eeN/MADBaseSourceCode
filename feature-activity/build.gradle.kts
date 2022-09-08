@@ -10,3 +10,7 @@ plugins {
 android {
     namespace = "dev.tsnanh.android.feature.activity.sample"
 }
+
+dependencies {
+    implementation(project(":core-testing"))
+}

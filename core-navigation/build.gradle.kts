@@ -9,6 +9,8 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":core-testing"))
+
     api(libs.androidx.hilt.navigation.compose)
     api(libs.androidx.navigation.compose)
 

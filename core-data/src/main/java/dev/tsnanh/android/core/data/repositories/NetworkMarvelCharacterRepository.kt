@@ -13,10 +13,9 @@ internal class NetworkMarvelCharacterRepository @Inject constructor(
     private val networkCharacterDataWrapperToCharacterDataWrapperMapper: NetworkCharacterDataWrapperToCharacterDataWrapperMapper,
     @MADDispatcher(MADDispatchers.IO) private val dispatcher: CoroutineDispatcher,
 ) : MarvelCharacterRepository {
-    override suspend fun getCharacters() =
-        withContext(dispatcher) {
-            networkCharacterDataWrapperToCharacterDataWrapperMapper(
-                marvelCharacterNetworkDataSource.getCharacters()
-            )
-        }
+    override suspend fun getCharacters(limit: Int?, offset: Int?) = withContext(dispatcher) {
+        networkCharacterDataWrapperToCharacterDataWrapperMapper(
+            marvelCharacterNetworkDataSource.getCharacters()
+        )
+    }
 }

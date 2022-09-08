@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":core-designsystem")
+
+
 pluginManagement {
     includeBuild("build-logic")
     repositories {
@@ -10,7 +13,7 @@ pluginManagement {
     resolutionStrategy {
         eachPlugin {
             if (requested.id.id == "dagger.hilt.android.plugin") {
-                useModule("com.google.dagger:hilt-android-gradle-plugin:2.43.2")
+                useModule("com.google.dagger:hilt-android-gradle-plugin:2.42")
             }
         }
     }

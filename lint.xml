@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
-    <issue id="HardcodedText" severity="error" />
+    <issue id="HardcodedText" severity="fatal" />
+    <issue id="AppCompatCustomView" severity="error" />
+    <issue id="AndroidGradlePluginVersion" severity="warning" />
 </lint>
