@@ -22,3 +22,7 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 }
+
+secrets {
+    defaultPropertiesFileName = "secret.defaults.properties"
+}
