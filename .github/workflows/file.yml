@@ -10,8 +10,6 @@ on:
 
 # Where will they run
 jobs:
-  build:
-    runs-on: ubuntu-latest
   gradle:
     runs-on: ubuntu-latest
     steps:
