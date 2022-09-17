@@ -93,12 +93,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":core-ui"))
-    implementation(project(":core-navigation"))
-    implementation(project(":feature-dashboard"))
-    implementation(project(":feature-search"))
-    implementation(project(":feature-profile"))
-    implementation(project(":feature-activity"))
+    implementation(project(":core:ui"))
+    implementation(project(":core:navigation"))
+    implementation(project(":feature:dashboard"))
+    implementation(project(":feature:search"))
+    implementation(project(":feature:profile"))
+    implementation(project(":feature:user"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)

@@ -1,16 +1,27 @@
 package dev.tsnanh.android.madbasesourcecode.di
 
+import dagger.Component
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.tsnanh.android.core.navigation.contracts.SampleActivityContract
+import dagger.multibindings.IntoMap
+import dagger.multibindings.StringKey
+import dev.tsnanh.android.core.navigation.contracts.NavigationRoute
+import dev.tsnanh.android.core.navigation.contracts.NoResultActivityContract
 import dev.tsnanh.android.feature.activity.sample.SampleActivity
+
+@Component(modules = [ContractsModule::class])
+interface ContractComponent {
+    fun contracts(): Map<String, NoResultActivityContract>
+}
 
 @Module
 @InstallIn(SingletonComponent::class)
 object ContractsModule {
     @Provides
-    fun providesSampleActivityContract(): SampleActivityContract =
-        SampleActivityContract(SampleActivity::class.java)
+    @IntoMap
+    @StringKey(NavigationRoute.USER)
+    fun providesSampleActivityContract(): NoResultActivityContract =
+        NoResultActivityContract(SampleActivity::class.java)
 }

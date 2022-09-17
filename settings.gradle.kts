@@ -33,22 +33,26 @@ include(":base-android")
 
 include(":benchmark")
 
-include(":core-data")
-include(":core-common")
-include(":core-datastore")
-include(":core-navigation")
-include(":core-network")
-include(":core-database")
-include(":core-testing")
-include(":core-ui")
-include(":core-model")
+// region Core modules
+include(":core:data")
+include(":core:common")
+include(":core:datastore")
+include(":core:navigation")
+include(":core:network")
+include(":core:database")
+include(":core:testing")
+include(":core:ui")
+include(":core:models")
+// endregion
 
 include(":domain")
 
-include(":feature-activity")
-include(":feature-profile")
-include(":feature-search")
-include(":feature-dashboard")
+// region Feature modules
+include(":feature:user")
+include(":feature:profile")
+include(":feature:search")
+include(":feature:dashboard")
+// endregion
 
 // Enable Gradle's version catalog support
 // https://docs.gradle.org/current/userguide/platforms.html
