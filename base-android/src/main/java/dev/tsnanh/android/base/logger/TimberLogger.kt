@@ -5,6 +5,10 @@ import timber.log.Timber
 import javax.inject.Inject
 
 internal class TimberLogger @Inject constructor() : Logger {
+    override fun invoke(block: () -> Any?) {
+        Timber.i(block().toString())
+    }
+
     override fun i(message: String, vararg args: Any?) {
         Timber.i(message, args)
     }
@@ -74,30 +78,6 @@ internal class TimberLogger @Inject constructor() : Logger {
     }
 
     override fun wtf(throwable: Throwable) {
-        Timber.wtf(throwable)
-    }
-
-    override fun clgt(message: String, vararg args: Any?) {
-        Timber.wtf(message, args)
-    }
-
-    override fun clgt(throwable: Throwable, message: String, vararg args: Any?) {
-        Timber.wtf(throwable, message, args)
-    }
-
-    override fun clgt(throwable: Throwable) {
-        Timber.wtf(throwable)
-    }
-
-    override fun dkmvclvltn(message: String, vararg args: Any?) {
-        Timber.wtf(message, args)
-    }
-
-    override fun dkmvclvltn(throwable: Throwable, message: String, vararg args: Any?) {
-        Timber.wtf(throwable, message, args)
-    }
-
-    override fun dkmvclvltn(throwable: Throwable) {
         Timber.wtf(throwable)
     }
 }

@@ -19,7 +19,7 @@ class DashboardFragment : ViewBindingFragment<FragmentDashboardBinding>() {
     @Inject
     lateinit var contracts: Map<String, NoResultActivityContract>
 
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentDashboardBinding =
+    override val viewInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentDashboardBinding =
         FragmentDashboardBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

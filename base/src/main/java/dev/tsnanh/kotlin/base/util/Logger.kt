@@ -1,6 +1,8 @@
 package dev.tsnanh.kotlin.base.util
 
 interface Logger {
+    operator fun invoke(block: () -> Any?)
+
     fun i(message: String, vararg args: Any?)
 
     fun i(throwable: Throwable, message: String, vararg args: Any?)
@@ -36,16 +38,4 @@ interface Logger {
     fun wtf(throwable: Throwable, message: String, vararg args: Any?)
 
     fun wtf(throwable: Throwable)
-
-    fun clgt(message: String, vararg args: Any?)
-
-    fun clgt(throwable: Throwable, message: String, vararg args: Any?)
-
-    fun clgt(throwable: Throwable)
-
-    fun dkmvclvltn(message: String, vararg args: Any?)
-
-    fun dkmvclvltn(throwable: Throwable, message: String, vararg args: Any?)
-
-    fun dkmvclvltn(throwable: Throwable)
 }
