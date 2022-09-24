@@ -11,14 +11,14 @@ abstract class ViewBindingFragment<T : ViewBinding> : Fragment() {
     private var _binding: T? = null
     protected val binding: T get() = _binding ?: throw IllegalAccessException("Dkm goi binding ngu vcl")
 
-    abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> T
+    abstract val viewInflater: (LayoutInflater, ViewGroup?, Boolean) -> T
 
     final override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = bindingInflater(inflater, container, false)
+        _binding = viewInflater(inflater, container, false)
         onCreateView(savedInstanceState)
         return binding.root
     }

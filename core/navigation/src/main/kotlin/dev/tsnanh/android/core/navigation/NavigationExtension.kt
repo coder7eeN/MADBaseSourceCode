@@ -7,17 +7,17 @@ import android.os.Parcelable
 import androidx.fragment.app.Fragment
 
 fun <Args : Parcelable> Activity.launch(
-    contract: BaseContract<Args, NoResult>?,
+    contract: BaseContract<Args, NoResult>,
     args: Args? = null,
 ) {
-    startActivity(contract!!.createIntent(this, (args ?: NoArgs) as Args))
+    startActivity(contract.createIntent(this, (args ?: NoArgs) as Args))
 }
 
 fun <Args : Parcelable> Fragment.launch(
-    contract: BaseContract<Args, NoResult>?,
+    contract: BaseContract<Args, NoResult>,
     args: Args? = null,
 ) {
-    startActivity(contract!!.createIntent(requireContext(), (args ?: NoArgs) as Args))
+    startActivity(contract.createIntent(requireContext(), (args ?: NoArgs) as Args))
 }
 
 fun <Result : Parcelable> Activity.setContractResult(

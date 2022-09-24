@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment : ViewBindingFragment<FragmentProfileBinding>() {
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentProfileBinding =
+    override val viewInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentProfileBinding =
         FragmentProfileBinding::inflate
 
     @Inject
