@@ -1,5 +1,5 @@
 [versions]
-androidDesugarJdkLibs = "1.2.2"
+androidDesugarJdkLibs = "2.0.0"
 accompanist = "0.25.1"
 androidGradlePlugin = "7.3.0"
 androidxActivity = "1.5.1"
