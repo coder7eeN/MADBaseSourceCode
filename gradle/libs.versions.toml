@@ -132,8 +132,8 @@ protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref 
 protobuf-kotlin-lite = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobuf" }
 google-analytics = "com.google.firebase:firebase-analytics-ktx:21.1.1"
 google-crashlytics = "com.google.firebase:firebase-crashlytics-ktx:18.2.13"
+google-gmsGoogleServices = "com.google.gms:google-services:4.3.14"
 google-crashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.9.2"
-google-gmsGoogleServices = "com.google.gms:google-services:4.3.13"
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber"}
 
