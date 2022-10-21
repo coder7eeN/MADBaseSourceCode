@@ -42,6 +42,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", project(":domain"))
                 add("implementation", project(":core:common"))
                 add("implementation", project(":core:navigation"))
+                add("implementation", project(":core:designsystem"))
 
                 add("testImplementation", project(":core:testing"))
                 add("androidTestImplementation", project(":core:testing"))

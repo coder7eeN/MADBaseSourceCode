@@ -1,6 +1,6 @@
 import org.gradle.api.Project
 
-private const val EnableCompose = "dev.tsnanh.android.enableCompose"
+private const val ComposeEnabled = "dev.tsnanh.android.composeEnabled"
 
 val Project.isComposeEnabled: Boolean
-    get() = (properties[EnableCompose] as? Boolean) ?: false
+    get() = (properties[ComposeEnabled] as? Boolean) ?: false
