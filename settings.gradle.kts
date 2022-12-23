@@ -1,8 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-include(":core:designsystem")
-
-
 pluginManagement {
     includeBuild("build-logic")
     repositories {
@@ -40,6 +37,7 @@ include(":benchmark")
 include(":core:data")
 include(":core:common")
 include(":core:datastore")
+include(":core:designsystem")
 include(":core:navigation")
 include(":core:network")
 include(":core:database")
@@ -51,9 +49,6 @@ include(":core:models")
 include(":domain")
 
 // region Feature modules
-include(":feature:user")
-include(":feature:profile")
-include(":feature:search")
 include(":feature:dashboard")
 // endregion
 

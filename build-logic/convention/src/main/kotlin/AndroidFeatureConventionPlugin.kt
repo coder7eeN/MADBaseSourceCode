@@ -42,21 +42,28 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", project(":domain"))
                 add("implementation", project(":core:common"))
                 add("implementation", project(":core:navigation"))
-                add("implementation", project(":core:designsystem"))
 
                 add("testImplementation", project(":core:testing"))
                 add("androidTestImplementation", project(":core:testing"))
 
-                add("implementation", libs.findLibrary("coil.kt").get())
+                add("implementation", libs.findLibrary("coil.kt.compose").get())
+
+                add("implementation", libs.findLibrary("androidx.hilt.navigation.compose").get())
+                add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
+                add("implementation", libs.findLibrary("androidx.paging.compose").get())
 
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
 
                 add("implementation", libs.findLibrary("hilt.android").get())
                 add("kapt", libs.findLibrary("hilt.compiler").get())
-                add("implementation", libs.findLibrary("androidx.appcompat").get())
-                add("implementation", libs.findLibrary("androidx.fragment").get())
-                add("implementation", libs.findLibrary("androidx.activity").get())
-                add("implementation", libs.findLibrary("material3").get())
+
+                // TODO : Remove this dependency once we upgrade to Android Studio Dolphin b/228889042
+                // These dependencies are currently necessary to render Compose previews
+                add(
+                    "debugImplementation",
+                    libs.findLibrary("androidx.customview.poolingcontainer").get()
+                )
+
             }
         }
     }

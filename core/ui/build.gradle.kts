@@ -9,10 +9,6 @@ plugins {
 
 android {
     namespace = "dev.tsnanh.android.core.ui"
-
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -20,14 +16,10 @@ dependencies {
     implementation(project(":core:models"))
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.coil.kt)
     implementation(libs.coil.kt.compose)
     implementation(libs.kotlinx.datetime)
-    implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     api(libs.androidx.appcompat)
-    api(libs.androidx.constraintlayout)
-    api(libs.androidx.recyclerview)
     api(libs.material3)
     implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.0.0-alpha03")
 
