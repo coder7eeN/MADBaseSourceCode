@@ -1,4 +1,4 @@
-package dev.tsnanh.android.core.ui
+package dev.tsnanh.android.core.ui.utils
 
 import dev.tsnanh.kotlin.base.InvokeError
 import dev.tsnanh.kotlin.base.InvokeStarted

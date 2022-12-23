@@ -1,4 +1,4 @@
-package dev.tsnanh.android.core.ui
+package dev.tsnanh.android.core.ui.utils
 
 import android.view.LayoutInflater
 import android.view.View

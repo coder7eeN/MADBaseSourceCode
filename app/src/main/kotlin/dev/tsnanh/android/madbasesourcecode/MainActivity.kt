@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
-import dev.tsnanh.android.core.ui.viewBinding
+import dev.tsnanh.android.core.ui.utils.viewBinding
 import dev.tsnanh.android.madbasesourcecode.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
