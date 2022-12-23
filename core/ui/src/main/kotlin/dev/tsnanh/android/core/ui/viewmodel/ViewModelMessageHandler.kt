@@ -1,9 +1,7 @@
 package dev.tsnanh.android.core.ui.viewmodel
 
-import dev.tsnanh.android.core.ui.utils.UiMessageManager
-
 internal interface ViewModelMessageHandler {
-    val uiMessageManager: UiMessageManager
+    val uiMessageManager: dev.tsnanh.android.core.ui.utils.UiMessageManager
 
     companion object {
         fun create(): ViewModelMessageHandler = ViewModelMessageHandlerImpl()
@@ -11,6 +9,7 @@ internal interface ViewModelMessageHandler {
 }
 
 internal class ViewModelMessageHandlerImpl : ViewModelMessageHandler {
-    override val uiMessageManager: UiMessageManager = UiMessageManager()
+    override val uiMessageManager: dev.tsnanh.android.core.ui.utils.UiMessageManager =
+        dev.tsnanh.android.core.ui.utils.UiMessageManager()
 }
 

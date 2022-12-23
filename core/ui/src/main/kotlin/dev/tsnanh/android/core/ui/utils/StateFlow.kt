@@ -1,6 +1,6 @@
 package dev.tsnanh.android.core.ui.utils
 
-import dev.tsnanh.kotlin.base.annotations.ExperimentalMADApi
+import dev.tsnanh.android.core.ui.annotations.ExperimentalMADUiApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.stateIn
 
 const val ANDROID_STOP_TIMEOUT_MILLIS = 5000L
 
-@ExperimentalMADApi
+@ExperimentalMADUiApi
 @Suppress("NOTHING_TO_INLINE")
 inline fun <T> Flow<Result<T>>.bindState(
     viewModelScope: CoroutineScope,

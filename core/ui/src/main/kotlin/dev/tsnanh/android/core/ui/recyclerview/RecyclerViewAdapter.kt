@@ -3,9 +3,9 @@ package dev.tsnanh.android.core.ui.recyclerview
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import dev.tsnanh.kotlin.base.annotations.ExperimentalMADApi
+import dev.tsnanh.android.core.ui.annotations.ExperimentalMADUiApi
 
-@ExperimentalMADApi
+@ExperimentalMADUiApi
 abstract class RecyclerViewAdapter<T, VH : RecyclerView.ViewHolder>(
     diffUtil: DiffUtil.ItemCallback<T>,
 ) : ListAdapter<T, VH>(diffUtil) {

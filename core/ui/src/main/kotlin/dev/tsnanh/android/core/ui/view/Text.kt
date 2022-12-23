@@ -1,4 +1,4 @@
-package dev.tsnanh.android.core.ui
+package dev.tsnanh.android.core.common.view
 
 import android.text.TextUtils
 import android.widget.TextView

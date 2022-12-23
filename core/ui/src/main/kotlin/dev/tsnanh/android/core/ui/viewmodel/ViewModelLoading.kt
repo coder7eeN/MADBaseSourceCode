@@ -1,9 +1,7 @@
 package dev.tsnanh.android.core.ui.viewmodel
 
-import dev.tsnanh.android.core.ui.utils.ObserveLoadingCounter
-
 internal interface ViewModelLoading {
-    val loadingCounter: ObserveLoadingCounter
+    val loadingCounter: dev.tsnanh.android.core.ui.utils.ObserveLoadingCounter
 
     companion object {
         fun create(): ViewModelLoading = ViewModelLoadingImpl()
@@ -11,5 +9,6 @@ internal interface ViewModelLoading {
 }
 
 internal class ViewModelLoadingImpl : ViewModelLoading {
-    override val loadingCounter: ObserveLoadingCounter = ObserveLoadingCounter()
+    override val loadingCounter: dev.tsnanh.android.core.ui.utils.ObserveLoadingCounter =
+        dev.tsnanh.android.core.ui.utils.ObserveLoadingCounter()
 }

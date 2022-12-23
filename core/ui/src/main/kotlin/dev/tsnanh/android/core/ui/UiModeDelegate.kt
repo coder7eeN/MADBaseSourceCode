@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.view.WindowInsetsControllerCompat
 
+@dev.tsnanh.android.core.ui.annotations.ExperimentalMADUiApi
 interface UiModeDelegate {
     fun AppCompatActivity.handleUiModeChange(configuration: Configuration)
 
