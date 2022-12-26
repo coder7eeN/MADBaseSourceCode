@@ -51,7 +51,7 @@ protobuf = "3.21.6"
 spotless = "6.11.0"
 protobufPlugin = "0.8.19"
 androidxPalette = "1.0.0"
-gradleDependencyUpdate = "0.42.0"
+gradleDependencyUpdate = "0.44.0"
 composesnapshot = "-"
 timber = "5.0.1"
 
