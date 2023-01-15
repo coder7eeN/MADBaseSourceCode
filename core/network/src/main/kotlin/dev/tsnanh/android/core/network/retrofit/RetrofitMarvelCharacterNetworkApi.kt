@@ -1,34 +1,30 @@
 package dev.tsnanh.android.core.network.retrofit
 
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import dev.tsnanh.android.core.network.BuildConfig
+import dev.tsnanh.android.core.network.base.Api
 import dev.tsnanh.android.core.network.datasources.MarvelCharacterNetworkDataSource
+import dev.tsnanh.android.core.network.delegate.createApi
+import dev.tsnanh.android.core.network.endpoints.Endpoint
 import dev.tsnanh.android.core.network.models.NetworkCharacterDataWrapper
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
+import dev.tsnanh.android.core.network.qualifiers.OkHttpClientType
+import dev.tsnanh.android.core.network.qualifiers.OkHttpClients
 import retrofit2.Retrofit
-import retrofit2.create
 import retrofit2.http.GET
+import retrofit2.http.Query
 import javax.inject.Inject
 
-private const val BASE_URL = "https://gateway.marvel.com:443/v1/public/"
-
-private interface RetrofitMarvelCharacterNetworkApi {
-    @GET(value = "characters?apikey=da6fdb4edc23dd68d0472b0838b4c8b1&hash=ae034a42ad44bc28635c5ed7fa688b60&ts=1659268624184")
-    suspend fun getCharacters(): NetworkCharacterDataWrapper
+private interface RetrofitMarvelCharacterNetworkApi : Api {
+    @GET(value = Endpoint.Characters.characters)
+    suspend fun getCharacters(
+        @Query(Endpoint.Characters.GET.qApiKey) apiKey: String,
+        @Query(Endpoint.Characters.GET.qTimestamp) timestamp: String,
+    ): NetworkCharacterDataWrapper
 }
 
-class RetrofitMarvelCharacterNetwork @Inject constructor(
-    okHttpClient: OkHttpClient,
-    networkJson: Json,
+internal class RetrofitMarvelCharacterNetwork @Inject constructor(
+    @OkHttpClientType(OkHttpClients.NoAuth)
+    override val retrofit: Retrofit
 ) : MarvelCharacterNetworkDataSource {
-    private val marvelCharacterNetworkApi: RetrofitMarvelCharacterNetworkApi =
-        Retrofit.Builder()
-            .client(okHttpClient)
-            .addConverterFactory(networkJson.asConverterFactory("application/json".toMediaType()))
-            .baseUrl(BASE_URL)
-            .build()
-            .create()
-
-    override suspend fun getCharacters() = marvelCharacterNetworkApi.getCharacters()
+    private val api by createApi<RetrofitMarvelCharacterNetworkApi>()
+    override suspend fun getCharacters() = api.getCharacters(BuildConfig.API_KEY, "1659268624184")
 }

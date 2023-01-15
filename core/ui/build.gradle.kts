@@ -12,7 +12,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":base"))
+    implementation(project(":core:common"))
     implementation(project(":core:models"))
 
     implementation(libs.androidx.core.ktx)

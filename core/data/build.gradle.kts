@@ -22,3 +22,6 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 }
+android {
+    namespace = "dev.tsnanh.android.core.data"
+}

@@ -28,9 +28,6 @@ include(":convention")
 
 include(":app")
 
-include(":base")
-include(":base-android")
-
 include(":benchmark")
 
 // region Core modules

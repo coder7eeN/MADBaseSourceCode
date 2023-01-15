@@ -2,6 +2,8 @@
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
+rootProject.name = "MADBaseSourceCode"
+
 dependencyResolutionManagement {
     repositories {
         google()

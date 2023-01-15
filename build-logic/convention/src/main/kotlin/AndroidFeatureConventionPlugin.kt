@@ -35,8 +35,6 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
             dependencies {
-                add("implementation", project(":base"))
-                add("implementation", project(":base-android"))
                 add("implementation", project(":core:models"))
                 add("implementation", project(":core:ui"))
                 add("implementation", project(":domain"))
@@ -56,14 +54,6 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
 
                 add("implementation", libs.findLibrary("hilt.android").get())
                 add("kapt", libs.findLibrary("hilt.compiler").get())
-
-                // TODO : Remove this dependency once we upgrade to Android Studio Dolphin b/228889042
-                // These dependencies are currently necessary to render Compose previews
-                add(
-                    "debugImplementation",
-                    libs.findLibrary("androidx.customview.poolingcontainer").get()
-                )
-
             }
         }
     }

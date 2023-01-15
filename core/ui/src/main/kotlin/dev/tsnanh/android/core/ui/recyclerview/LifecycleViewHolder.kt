@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
-import dev.tsnanh.android.core.ui.annotations.ExperimentalMADUiApi
+import dev.tsnanh.android.core.common.annotations.ExperimentalMADUiApi
 
 @ExperimentalMADUiApi
 abstract class LifecycleViewHolder protected constructor(

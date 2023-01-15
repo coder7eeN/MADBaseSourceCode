@@ -3,7 +3,7 @@ package dev.tsnanh.android.core.ui.recyclerview
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import dev.tsnanh.android.core.ui.annotations.ExperimentalMADUiApi
+import dev.tsnanh.android.core.common.annotations.ExperimentalMADUiApi
 
 @ExperimentalMADUiApi
 abstract class RecyclerViewAdapter<T, VH : RecyclerView.ViewHolder>(
